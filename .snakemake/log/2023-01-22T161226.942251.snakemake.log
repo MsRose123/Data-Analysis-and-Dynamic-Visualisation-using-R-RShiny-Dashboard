@@ -1,0 +1,6 @@
+Building DAG of jobs...
+MissingInputException in rule transform  in line 17 of /Users/divyarose/Library/CloudStorage/OneDrive-UniversityofBristol/applied_health_ds/Assignments/SummativeAssessment_2/AHDS_assessment2_2332635/Snakefile:
+Missing input files for rule transform:
+    output: intermediates/data/obeseProbData1.csv, intermediates/data/obeseMaleProbData1.csv, intermediates/data/obeseFemaleProbData1.csv
+    affected files:
+        cleanDatas/data.csv

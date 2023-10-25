@@ -1,0 +1,31 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job              count    min threads    max threads
+-------------  -------  -------------  -------------
+shiny_web_app        1              1              1
+total                1              1              1
+
+Select jobs to execute...
+
+[Wed Jan 25 10:50:57 2023]
+rule shiny_web_app:
+    input: intermediates/data/obesityTransformedData.csv, intermediates/data/obeseProbData.csv, intermediates/data/obeseMaleProbData.csv, intermediates/data/obeseFemaleProbData.csv, intermediates/data/hypertensionTransformedData.csv, intermediates/data/hypertensionProbData.csv, intermediates/data/hypertensionMaleProbData.csv, intermediates/data/hypertensionFemaleProbData.csv
+    jobid: 0
+    reason: Rules with a run or shell declaration but no output are always executed.
+    resources: tmpdir=/var/folders/wx/8grjv4493rb1qn4wzt3kb8040000gn/T
+
+Terminating processes on user request, this might take some time.
+[Wed Jan 25 10:51:08 2023]
+Error in rule shiny_web_app:
+    jobid: 0
+    input: intermediates/data/obesityTransformedData.csv, intermediates/data/obeseProbData.csv, intermediates/data/obeseMaleProbData.csv, intermediates/data/obeseFemaleProbData.csv, intermediates/data/hypertensionTransformedData.csv, intermediates/data/hypertensionProbData.csv, intermediates/data/hypertensionMaleProbData.csv, intermediates/data/hypertensionFemaleProbData.csv
+    shell:
+        
+    Rscript -e 'shiny::runApp("app.R",port=8889,host="0.0.0.0")'
+    
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Complete log: .snakemake/log/2023-01-25T105057.243797.snakemake.log

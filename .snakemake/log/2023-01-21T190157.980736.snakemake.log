@@ -1,0 +1,7 @@
+Building DAG of jobs...
+MissingInputException in rule clean_up_data  in line 3 of /Users/divyarose/Library/CloudStorage/OneDrive-UniversityofBristol/applied_health_ds/Assignments/SummativeAssessment_2/AHDS_assessment2_2332635/Snakefile:
+Missing input files for rule clean_up_data:
+    output: /cleanDatas/data.csv
+    affected files:
+        /rawData/BMX_D.csv
+        /rawData/DEMO_D.csv

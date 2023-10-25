@@ -1,0 +1,2 @@
+SyntaxError in line 10 of /Users/divyarose/Library/CloudStorage/OneDrive-UniversityofBristol/applied_health_ds/Assignments/SummativeAssessment_2/AHDS_assessment2_2332635/Snakefile:
+No rule keywords allowed after run/shell/script/notebook/wrapper/template_engine/cwl in rule clean_up_data. (Snakefile, line 10)

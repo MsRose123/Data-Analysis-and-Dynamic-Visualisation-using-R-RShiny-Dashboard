@@ -1,0 +1,41 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                           count    min threads    max threads
+--------------------------  -------  -------------  -------------
+all                               1              1              1
+clean_up_data_hypertension        1              1              1
+clean_up_data_obesity             1              1              1
+plot_hypertension                 1              1              1
+plot_obesity                      1              1              1
+transform_hypertension            1              1              1
+transform_obesity                 1              1              1
+total                             7              1              1
+
+Select jobs to execute...
+
+[Mon Jan 23 16:56:31 2023]
+rule clean_up_data_obesity:
+    input: rawData/BMX_D.csv, rawData/DEMO_D.csv
+    output: cleanDatas/obesityData.csv
+    jobid: 3
+    reason: Missing output files: cleanDatas/obesityData.csv
+    resources: tmpdir=/var/folders/wx/8grjv4493rb1qn4wzt3kb8040000gn/T
+
+[Mon Jan 23 16:56:31 2023]
+Error in rule clean_up_data_obesity:
+    jobid: 3
+    input: rawData/BMX_D.csv, rawData/DEMO_D.csv
+    output: cleanDatas/obesityData.csv
+    shell:
+        
+    mkdir -p cleanDatas
+    Rscript dataCleaningObesity.R
+    
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2023-01-23T165627.958902.snakemake.log

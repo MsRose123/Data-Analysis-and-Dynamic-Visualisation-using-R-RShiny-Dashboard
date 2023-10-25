@@ -1,0 +1,107 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                           count    min threads    max threads
+--------------------------  -------  -------------  -------------
+all                               1              1              1
+clean_up_data_hypertension        1              1              1
+clean_up_data_obesity             1              1              1
+plot_hypertension                 1              1              1
+plot_obesity                      1              1              1
+transform_hypertension            1              1              1
+transform_obesity                 1              1              1
+total                             7              1              1
+
+Select jobs to execute...
+
+[Tue Jan 24 19:40:28 2023]
+rule clean_up_data_obesity:
+    input: rawData/BMX_D.csv, rawData/DEMO_D.csv
+    output: cleanData/obesityData.csv
+    jobid: 3
+    reason: Missing output files: cleanData/obesityData.csv
+    resources: tmpdir=/var/folders/wx/8grjv4493rb1qn4wzt3kb8040000gn/T
+
+[Tue Jan 24 19:40:29 2023]
+Finished job 3.
+1 of 7 steps (14%) done
+Select jobs to execute...
+
+[Tue Jan 24 19:40:29 2023]
+rule transform_obesity:
+    input: cleanData/obesityData.csv
+    output: intermediates/data/obesityTransformedData.csv, intermediates/data/obeseProbData.csv, intermediates/data/obeseMaleProbData.csv, intermediates/data/obeseFemaleProbData.csv
+    jobid: 2
+    reason: Missing output files: intermediates/data/obeseMaleProbData.csv, intermediates/data/obeseProbData.csv, intermediates/data/obeseFemaleProbData.csv; Input files updated by another job: cleanData/obesityData.csv
+    resources: tmpdir=/var/folders/wx/8grjv4493rb1qn4wzt3kb8040000gn/T
+
+[Tue Jan 24 19:40:30 2023]
+Finished job 2.
+2 of 7 steps (29%) done
+Select jobs to execute...
+
+[Tue Jan 24 19:40:30 2023]
+rule clean_up_data_hypertension:
+    input: rawData/BPX_D.csv, rawData/DEMO_D.csv
+    output: cleanData/hypertensionData.csv
+    jobid: 6
+    reason: Missing output files: cleanData/hypertensionData.csv
+    resources: tmpdir=/var/folders/wx/8grjv4493rb1qn4wzt3kb8040000gn/T
+
+[Tue Jan 24 19:40:31 2023]
+Finished job 6.
+3 of 7 steps (43%) done
+Select jobs to execute...
+
+[Tue Jan 24 19:40:31 2023]
+rule transform_hypertension:
+    input: cleanData/hypertensionData.csv
+    output: intermediates/data/hypertensionTransformedData.csv, intermediates/data/hypertensionProbData.csv, intermediates/data/hypertensionMaleProbData.csv, intermediates/data/hypertensionFemaleProbData.csv
+    jobid: 5
+    reason: Missing output files: intermediates/data/hypertensionProbData.csv, intermediates/data/hypertensionMaleProbData.csv, intermediates/data/hypertensionFemaleProbData.csv; Input files updated by another job: cleanData/hypertensionData.csv
+    resources: tmpdir=/var/folders/wx/8grjv4493rb1qn4wzt3kb8040000gn/T
+
+[Tue Jan 24 19:40:32 2023]
+Finished job 5.
+4 of 7 steps (57%) done
+Select jobs to execute...
+
+[Tue Jan 24 19:40:32 2023]
+rule plot_hypertension:
+    input: intermediates/data/hypertensionProbData.csv, intermediates/data/hypertensionMaleProbData.csv, intermediates/data/hypertensionFemaleProbData.csv
+    output: results/hypertension_results/fig-all.png, results/hypertension_results/fig-male.png, results/hypertension_results/fig-female.png, results/hypertension_results/fig-both.png
+    jobid: 4
+    reason: Missing output files: results/hypertension_results/fig-both.png; Input files updated by another job: intermediates/data/hypertensionProbData.csv, intermediates/data/hypertensionMaleProbData.csv, intermediates/data/hypertensionFemaleProbData.csv
+    resources: tmpdir=/var/folders/wx/8grjv4493rb1qn4wzt3kb8040000gn/T
+
+[Tue Jan 24 19:40:39 2023]
+Finished job 4.
+5 of 7 steps (71%) done
+Select jobs to execute...
+
+[Tue Jan 24 19:40:39 2023]
+rule plot_obesity:
+    input: intermediates/data/obeseProbData.csv, intermediates/data/obeseMaleProbData.csv, intermediates/data/obeseFemaleProbData.csv
+    output: results/obesity_results/fig-all.png, results/obesity_results/fig-male.png, results/obesity_results/fig-female.png, results/obesity_results/fig-both.png
+    jobid: 1
+    reason: Missing output files: results/obesity_results/fig-both.png; Input files updated by another job: intermediates/data/obeseMaleProbData.csv, intermediates/data/obeseProbData.csv, intermediates/data/obeseFemaleProbData.csv
+    resources: tmpdir=/var/folders/wx/8grjv4493rb1qn4wzt3kb8040000gn/T
+
+[Tue Jan 24 19:40:41 2023]
+Finished job 1.
+6 of 7 steps (86%) done
+Select jobs to execute...
+
+[Tue Jan 24 19:40:41 2023]
+localrule all:
+    input: results/obesity_results/fig-both.png, results/hypertension_results/fig-both.png
+    jobid: 0
+    reason: Input files updated by another job: results/obesity_results/fig-both.png, results/hypertension_results/fig-both.png
+    resources: tmpdir=/var/folders/wx/8grjv4493rb1qn4wzt3kb8040000gn/T
+
+[Tue Jan 24 19:40:41 2023]
+Finished job 0.
+7 of 7 steps (100%) done
+Complete log: .snakemake/log/2023-01-24T194028.589072.snakemake.log

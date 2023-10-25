@@ -1,0 +1,6 @@
+Building DAG of jobs...
+MissingInputException in rule clean_up_data_hypertension  in line 18 of /Users/divyarose/Library/CloudStorage/OneDrive-UniversityofBristol/applied_health_ds/Assignments/SummativeAssessment_2/AHDS_assessment2_2332635/Snakefile:
+Missing input files for rule clean_up_data_hypertension:
+    output: cleanDatas/hypertensionData.csv
+    affected files:
+        rawData/BMP_D.csv

@@ -1,0 +1,35 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                           count    min threads    max threads
+--------------------------  -------  -------------  -------------
+clean_up_data_hypertension        1              1              1
+shiny_web_app                     1              1              1
+transform_hypertension            1              1              1
+total                             3              1              1
+
+Select jobs to execute...
+
+[Wed Jan 25 10:43:46 2023]
+rule clean_up_data_hypertension:
+    input: rawData/BPX_D.csv, rawData/DEMO_D.csv
+    output: cleanData/hypertensionData.csv
+    jobid: 4
+    reason: Missing output files: cleanData/hypertensionData.csv; Code has changed since last execution
+    resources: tmpdir=/var/folders/wx/8grjv4493rb1qn4wzt3kb8040000gn/T
+
+Terminating processes on user request, this might take some time.
+[Wed Jan 25 10:44:10 2023]
+Error in rule clean_up_data_hypertension:
+    jobid: 4
+    input: rawData/BPX_D.csv, rawData/DEMO_D.csv
+    output: cleanData/hypertensionData.csv
+    shell:
+        
+    Rscript -e 'shiny::runApp("app.R",port=8888,host="0.0.0.0")'
+    
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Complete log: .snakemake/log/2023-01-25T104345.672613.snakemake.log

@@ -1,0 +1,51 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job              count    min threads    max threads
+-------------  -------  -------------  -------------
+all                  1              1              1
+clean_up_data        1              1              1
+transform            1              1              1
+total                3              1              1
+
+Select jobs to execute...
+
+[Sun Jan 22 16:14:58 2023]
+rule clean_up_data:
+    input: rawData/BMX_D.csv, rawData/DEMO_D.csv
+    output: cleanDatas/data.csv
+    jobid: 2
+    reason: Missing output files: cleanDatas/data.csv
+    resources: tmpdir=/var/folders/wx/8grjv4493rb1qn4wzt3kb8040000gn/T
+
+[Sun Jan 22 16:14:59 2023]
+Finished job 2.
+1 of 3 steps (33%) done
+Select jobs to execute...
+
+[Sun Jan 22 16:14:59 2023]
+rule transform:
+    input: cleanDatas/data.csv
+    output: intermediates/data/obeseProbData1.csv, intermediates/data/obeseMaleProbData1.csv, intermediates/data/obeseFemaleProbData1.csv
+    jobid: 1
+    reason: Missing output files: intermediates/data/obeseFemaleProbData1.csv, intermediates/data/obeseProbData1.csv, intermediates/data/obeseMaleProbData1.csv; Input files updated by another job: cleanDatas/data.csv; Set of input files has changed since last execution
+    resources: tmpdir=/var/folders/wx/8grjv4493rb1qn4wzt3kb8040000gn/T
+
+[Sun Jan 22 16:15:00 2023]
+Finished job 1.
+2 of 3 steps (67%) done
+Select jobs to execute...
+
+[Sun Jan 22 16:15:00 2023]
+localrule all:
+    input: intermediates/data/obeseProbData1.csv, intermediates/data/obeseMaleProbData1.csv, intermediates/data/obeseFemaleProbData1.csv
+    jobid: 0
+    reason: Input files updated by another job: intermediates/data/obeseFemaleProbData1.csv, intermediates/data/obeseProbData1.csv, intermediates/data/obeseMaleProbData1.csv
+    resources: tmpdir=/var/folders/wx/8grjv4493rb1qn4wzt3kb8040000gn/T
+
+[Sun Jan 22 16:15:00 2023]
+Finished job 0.
+3 of 3 steps (100%) done
+Complete log: .snakemake/log/2023-01-22T161458.327777.snakemake.log

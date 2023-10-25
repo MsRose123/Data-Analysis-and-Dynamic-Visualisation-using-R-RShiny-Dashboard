@@ -1,0 +1,5 @@
+Building DAG of jobs...
+MissingInputException in rule all  in line 1 of /Users/divyarose/Library/CloudStorage/OneDrive-UniversityofBristol/applied_health_ds/Assignments/SummativeAssessment_2/AHDS_assessment2_2332635/Snakefile:
+Missing input files for rule all:
+    affected files:
+        results/obesity_results/fig-both.pngresults/hypertension_results/fig-both.png

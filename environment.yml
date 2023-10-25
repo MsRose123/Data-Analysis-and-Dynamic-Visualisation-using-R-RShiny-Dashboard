@@ -1,0 +1,13 @@
+name: AHDS_ASSESSMENT2_2332635
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+  - base
+dependencies:
+  - python=3.8
+  - snakemake
+  - r
+  - r-tidyverse
+  - r-shiny
+  - graphviz
